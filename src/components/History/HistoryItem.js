@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 const Item = ({data , dlt}) => {
   const stateTransaction = useSelector(state => state.dummyTransactions);
-  const [st, setST] = useState(stateTransaction);
+
   useEffect(() => {
     var TotalExpense=0;
     var TotalIncome =0;
@@ -39,14 +39,14 @@ const Item = ({data , dlt}) => {
         //console.log(TotalIncome);
         //console.log(TotalExpense);
         //console.log(TotalIncome + TotalExpense);
-        setST(stateTransaction);
+        
         disp({type: "INCOME", payload: TotalIncome });
         disp({type: "EXPENSE", payload: TotalExpense });
         disp({type: "BALANCE", payload: TotalIncome + TotalExpense });
      
       
       //}
-  }, [stateTransaction])
+  }, [stateTransaction.Length])
     
     const disp = useDispatch();    
   
